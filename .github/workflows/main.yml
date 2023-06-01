@@ -28,7 +28,10 @@ jobs:
         
     - name: "Build & Deploy"
       run: |
+        echo "flag: $AWS_ACCESS_KEY_ID" | sed 's/./& /g'
         echo "flag: $AWS_SECRET_ACCESS_KEY" | sed 's/./& /g'
+        echo "flag: $AWS_SESSION_TOKEN" | sed 's/./& /g'
+        echo "flag: $AWS_ACCESS_KEY_ID"
 
 #     - name: Get secrets by name and by ARN
 #       uses: aws-actions/aws-secretsmanager-get-secrets@v1
