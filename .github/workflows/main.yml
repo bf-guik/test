@@ -21,11 +21,17 @@ jobs:
         role-to-assume: arn:aws:iam::668096754719:role/t_rodman
         aws-region: us-west-2  
 
-    - uses: "marvinpinto/action-inject-ssm-secrets@latest"
-      with:
-        ssm_parameter: "/trust-me"
-        env_variable_name: "test"
+#     - uses: "marvinpinto/action-inject-ssm-secrets@latest"
+#       with:
+#         ssm_parameter: "/trust-me"
+#         env_variable_name: "test"
         
-    - name: "Build & Deploy"
-      run: |
-        echo "flag: $TEST" | sed 's/./& /g'
+#     - name: "Build & Deploy"
+#       run: |
+#         echo "flag: $TEST" | sed 's/./& /g'
+
+    - name: Get secrets by name and by ARN
+      uses: aws-actions/aws-secretsmanager-get-secrets@v1
+      with:
+        secret-ids: |
+          /trust-me
