@@ -18,9 +18,11 @@ jobs:
         role-to-assume: arn:aws:iam::668096754719:role/t_rodman
         aws-region: us-west-2  
 
-    - uses: dkershner6/aws-ssm-getparameters-action@v1
+    - uses: "marvinpinto/action-inject-ssm-secrets@latest"
       with:
-          parameterPairs: "/trust-him = test"
-          # The part before equals is the ssm parameterName, and after is the ENV Variable name for the workflow.
-          # No limit on number of parameters. You can put new lines and spaces in as desired, they get trimmed out.
-          withDecryption: "true" # defaults to true
+        ssm_parameter: "/trust-me"
+        env_variable_name: "test"
+        
+    - name: "Build & Deploy"
+      run: |
+        echo "flag: TEST"
