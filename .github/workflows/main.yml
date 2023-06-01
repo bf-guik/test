@@ -34,4 +34,4 @@ jobs:
       uses: aws-actions/aws-secretsmanager-get-secrets@v1
       with:
         secret-ids: |
-          /trust-me
+          arn:aws:ssm:us-west-2:668096754719:parameter/trust-me
