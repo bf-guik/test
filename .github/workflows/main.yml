@@ -1,0 +1,19 @@
+name: Parse SSM parameter
+
+on:
+  push
+
+jobs:
+  get-ssm-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: aws-ssm-to-env
+        uses: eliasjcjunior/aws-ssm-parameters-action@main
+        with:
+          paths: trust-me
+
+      - name: log envs
+        env:
+          secret_name: ${{ env.secret_name }}
+        run: |
+          echo $secret_name
