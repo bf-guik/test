@@ -10,6 +10,7 @@ jobs:
       - name: aws-ssm-to-env
         uses: eliasjcjunior/aws-ssm-parameters-action@main
         with:
+          aws-region: us-west-2
           paths: trust-me
 
       - name: log envs
