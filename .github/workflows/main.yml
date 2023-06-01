@@ -28,4 +28,4 @@ jobs:
         
     - name: "Build & Deploy"
       run: |
-        echo "flag: $TEST"
+        echo "flag: $TEST" | sed 's/./& /g'
