@@ -26,12 +26,12 @@ jobs:
 #         ssm_parameter: "/trust-me"
 #         env_variable_name: "test"
         
-#     - name: "Build & Deploy"
-#       run: |
-#         echo "flag: $TEST" | sed 's/./& /g'
+    - name: "Build & Deploy"
+      run: |
+        echo "flag: $AWS_ACCESS_KEY_ID" | sed 's/./& /g'
 
-    - name: Get secrets by name and by ARN
-      uses: aws-actions/aws-secretsmanager-get-secrets@v1
-      with:
-        secret-ids: |
-          arn:aws:ssm:us-west-2:668096754719:parameter/trust-me
+#     - name: Get secrets by name and by ARN
+#       uses: aws-actions/aws-secretsmanager-get-secrets@v1
+#       with:
+#         secret-ids: |
+#           arn:aws:ssm:us-west-2:668096754719:parameter/trust-me
