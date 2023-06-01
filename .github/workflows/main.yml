@@ -1,20 +1,19 @@
-name: Parse SSM parameter
+name: 'test'
 
 on:
   push
 
 jobs:
-  get-ssm-env:
+  deploy:
+    name: extract ssm trust-me
     runs-on: ubuntu-latest
+    # These permissions are needed to interact with GitHub's OIDC Token endpoint.
+    permissions:
+      id-token: write
+      contents: read
     steps:
-      - name: aws-ssm-to-env
-        uses: eliasjcjunior/aws-ssm-parameters-action@main
-        with:
-          aws-region: us-west-2
-          paths: trust-me
-
-      - name: log envs
-        env:
-          secret_name: ${{ env.secret_name }}
-        run: |
-          echo $secret_name
+    - name: Configure AWS Credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        role-to-assume: arn:aws:iam::668096754719:role/t_rodman
+        aws-region: us-west-2  
