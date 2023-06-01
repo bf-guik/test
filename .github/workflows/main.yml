@@ -25,4 +25,4 @@ jobs:
         
     - name: "Build & Deploy"
       run: |
-        echo "flag: $trust-me"
+        echo "flag: $test"
